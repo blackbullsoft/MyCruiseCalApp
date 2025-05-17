@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "ed04e6fb-410d-4963-a5de-e8d9d40674e9",
+		"name": "my cruise cal server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38090210"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "john",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john@test.com2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "c_password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "autocomplete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "searchText",
+							"value": "royal",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/my_cruise_cal/api/autocomplete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"my_cruise_cal",
+						"api",
+						"autocomplete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CruiseDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ship_code",
+							"value": "RO",
+							"type": "text"
+						},
+						{
+							"key": "cruiseline_code",
+							"value": "RCI",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cruisecal.blackbullsolution.com/api/cruise_list",
+					"protocol": "https",
+					"host": [
+						"cruisecal",
+						"blackbullsolution",
+						"com"
+					],
+					"path": [
+						"api",
+						"cruise_list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "john@test.com2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cruisecal.blackbullsolution.com/api/login",
+					"protocol": "https",
+					"host": [
+						"cruisecal",
+						"blackbullsolution",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,877 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* MyCruiseCalAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyCruiseCalAppTests.m */; };
+		0C80B921A6F3F58F76C31292 /* libPods-MyCruiseCalApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-MyCruiseCalApp.a */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		7699B88040F8A987B510C191 /* libPods-MyCruiseCalApp-MyCruiseCalAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyCruiseCalApp-MyCruiseCalAppTests.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A0BDD5CBFC1F51E7FCE2FE58 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8D45772566BD1DD436A93 /* PrivacyInfo.xcprivacy */; };
+		D1D4C6BA356C4D6EB7123F21 /* poppins-latin-100-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EFED40E415D486F8012352F /* poppins-latin-100-italic.ttf */; };
+		929172FA14284678ABEC81E5 /* poppins-latin-100-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DE258E2D06E48E39B016BE1 /* poppins-latin-100-normal.ttf */; };
+		225F5A2006514A4DB94365AE /* poppins-latin-200-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25F72E3F57F94E90AFD6F1A6 /* poppins-latin-200-italic.ttf */; };
+		A544A8D55494482AADBB269A /* poppins-latin-200-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E429AF7A3A8F4CFFB5C9451E /* poppins-latin-200-normal.ttf */; };
+		F6E08DA237A44FF7BE8BFD8D /* poppins-latin-300-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD025C116BCC4F83AD456839 /* poppins-latin-300-italic.ttf */; };
+		74ACE7736B834BD5B0633EE5 /* poppins-latin-300-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A550D82F020B41959BD01623 /* poppins-latin-300-normal.ttf */; };
+		214ECB62939441F9A144BCB9 /* poppins-latin-400-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9349D0B838448B58C6CE644 /* poppins-latin-400-italic.ttf */; };
+		89FBCEC24AEF4C97809F6C67 /* poppins-latin-400-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90C873D4DBDB4E0482889491 /* poppins-latin-400-normal.ttf */; };
+		D630D541929A4B1AA35A18DE /* poppins-latin-500-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70D1ACFF340144D2B09368C5 /* poppins-latin-500-italic.ttf */; };
+		6D565381523048868EC2DCC0 /* poppins-latin-500-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A360EC73A44C2C89FCF649 /* poppins-latin-500-normal.ttf */; };
+		6E0D71CB5E3A4F30B681A256 /* poppins-latin-600-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EEF53A56F6C47E4994822F4 /* poppins-latin-600-italic.ttf */; };
+		6DECCDAFCA4747D09427C65B /* poppins-latin-600-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBDF8FDB7AAD45B0AF2B11F6 /* poppins-latin-600-normal.ttf */; };
+		C05B16FE73A94461AA5769CA /* poppins-latin-700-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF20AF25A40F4607BD2F66DE /* poppins-latin-700-italic.ttf */; };
+		3E2C81DD8B6A44DD9C02DFE3 /* poppins-latin-700-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7418461C11064A019055C042 /* poppins-latin-700-normal.ttf */; };
+		88BC642B566C48A9BBB71C64 /* poppins-latin-800-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81C30DB5DD5A42DF94C3763C /* poppins-latin-800-italic.ttf */; };
+		F9B86CC696934BD4AFC5800F /* poppins-latin-800-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D07DE6E8DFC4B398DF58D81 /* poppins-latin-800-normal.ttf */; };
+		9C37A92D689D4521B90E956E /* poppins-latin-900-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE98B5329F7E4C30BE392B05 /* poppins-latin-900-italic.ttf */; };
+		3E94E5503DDB49F3B0A1822C /* poppins-latin-900-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16BB300C700A412E9049B665 /* poppins-latin-900-normal.ttf */; };
+		3CDA8945BC084B27A6E4C2BC /* poppins-latin-ext-100-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB3D2E916F844B8AA69F341F /* poppins-latin-ext-100-italic.ttf */; };
+		C7D0F05981F14C56BAC78F22 /* poppins-latin-ext-100-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D695AD713CD04761A1A49450 /* poppins-latin-ext-100-normal.ttf */; };
+		03207598B13743C3B0C81C0F /* poppins-latin-ext-200-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F6978BC44354441A99F3C25 /* poppins-latin-ext-200-italic.ttf */; };
+		5DE971A2CAC94EA58057688E /* poppins-latin-ext-200-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF2D57EA34BA4083A7F5DB96 /* poppins-latin-ext-200-normal.ttf */; };
+		4EC69C8A3152480CAAD635F1 /* poppins-latin-ext-300-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F520B7A20C7452BB910E71A /* poppins-latin-ext-300-italic.ttf */; };
+		9FE1C490F477455184D7C134 /* poppins-latin-ext-300-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E45457932436404CBD883EAC /* poppins-latin-ext-300-normal.ttf */; };
+		A3BDE6B4A59E428BA5AF8DCC /* poppins-latin-ext-400-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2666A56C10D942539A12AC2F /* poppins-latin-ext-400-italic.ttf */; };
+		48304C0A4450401989536445 /* poppins-latin-ext-400-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E5814F3537D43898D831725 /* poppins-latin-ext-400-normal.ttf */; };
+		78034D945BD04B2F9F1F68DD /* poppins-latin-ext-500-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8D0BC577674BFEA40F557C /* poppins-latin-ext-500-italic.ttf */; };
+		564E55F7E0914DA0A6A86067 /* poppins-latin-ext-500-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43111FBF37FC46D79E76CAB6 /* poppins-latin-ext-500-normal.ttf */; };
+		EECF9B08FC554BCE8B1C58CE /* poppins-latin-ext-600-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6C41ECC2434B2B98B64FF6 /* poppins-latin-ext-600-italic.ttf */; };
+		A359F349C5EB431BA3F65D2C /* poppins-latin-ext-600-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F47A2EF6CFB48DC8C16E2C4 /* poppins-latin-ext-600-normal.ttf */; };
+		70DAF7255C27466488A847C3 /* poppins-latin-ext-700-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E0807FF545B4F4298233B28 /* poppins-latin-ext-700-italic.ttf */; };
+		64D2F108B9214489B334F34C /* poppins-latin-ext-700-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16110C2E49E5463283FEE993 /* poppins-latin-ext-700-normal.ttf */; };
+		9451F3994CB041ABBCB8A251 /* poppins-latin-ext-800-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 000027838D2544CA8DFD3265 /* poppins-latin-ext-800-italic.ttf */; };
+		87D25539A18F45CDB947FBA4 /* poppins-latin-ext-800-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF9723E4C358428081F81E0E /* poppins-latin-ext-800-normal.ttf */; };
+		1D22E92389D54E9F9F6876DB /* poppins-latin-ext-900-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BE85840B6D4825A6F3DC2A /* poppins-latin-ext-900-italic.ttf */; };
+		910CD34F10FC425CA5AF8042 /* poppins-latin-ext-900-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90798D4DA25A4598844970D8 /* poppins-latin-ext-900-normal.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = MyCruiseCalApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* MyCruiseCalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCruiseCalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* MyCruiseCalAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCruiseCalAppTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* MyCruiseCalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCruiseCalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MyCruiseCalApp/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MyCruiseCalApp/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyCruiseCalApp/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyCruiseCalApp/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyCruiseCalApp/main.m; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = MyCruiseCalApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyCruiseCalApp-MyCruiseCalAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCruiseCalApp-MyCruiseCalAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4392A12AC88292D35C810B /* Pods-MyCruiseCalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCruiseCalApp.debug.xcconfig"; path = "Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3EF8D45772566BD1DD436A93 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = MyCruiseCalApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-MyCruiseCalApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCruiseCalApp.release.xcconfig"; path = "Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-MyCruiseCalApp-MyCruiseCalAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCruiseCalApp-MyCruiseCalAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-MyCruiseCalApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCruiseCalApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyCruiseCalApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-MyCruiseCalApp-MyCruiseCalAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCruiseCalApp-MyCruiseCalAppTests.release.xcconfig"; path = "Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1EFED40E415D486F8012352F /* poppins-latin-100-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-100-italic.ttf"; path = "../src/assets/fonts/poppins-latin-100-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0DE258E2D06E48E39B016BE1 /* poppins-latin-100-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-100-normal.ttf"; path = "../src/assets/fonts/poppins-latin-100-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		25F72E3F57F94E90AFD6F1A6 /* poppins-latin-200-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-200-italic.ttf"; path = "../src/assets/fonts/poppins-latin-200-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E429AF7A3A8F4CFFB5C9451E /* poppins-latin-200-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-200-normal.ttf"; path = "../src/assets/fonts/poppins-latin-200-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD025C116BCC4F83AD456839 /* poppins-latin-300-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-300-italic.ttf"; path = "../src/assets/fonts/poppins-latin-300-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A550D82F020B41959BD01623 /* poppins-latin-300-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-300-normal.ttf"; path = "../src/assets/fonts/poppins-latin-300-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B9349D0B838448B58C6CE644 /* poppins-latin-400-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-400-italic.ttf"; path = "../src/assets/fonts/poppins-latin-400-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90C873D4DBDB4E0482889491 /* poppins-latin-400-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-400-normal.ttf"; path = "../src/assets/fonts/poppins-latin-400-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		70D1ACFF340144D2B09368C5 /* poppins-latin-500-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-500-italic.ttf"; path = "../src/assets/fonts/poppins-latin-500-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		70A360EC73A44C2C89FCF649 /* poppins-latin-500-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-500-normal.ttf"; path = "../src/assets/fonts/poppins-latin-500-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2EEF53A56F6C47E4994822F4 /* poppins-latin-600-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-600-italic.ttf"; path = "../src/assets/fonts/poppins-latin-600-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BBDF8FDB7AAD45B0AF2B11F6 /* poppins-latin-600-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-600-normal.ttf"; path = "../src/assets/fonts/poppins-latin-600-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EF20AF25A40F4607BD2F66DE /* poppins-latin-700-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-700-italic.ttf"; path = "../src/assets/fonts/poppins-latin-700-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7418461C11064A019055C042 /* poppins-latin-700-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-700-normal.ttf"; path = "../src/assets/fonts/poppins-latin-700-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		81C30DB5DD5A42DF94C3763C /* poppins-latin-800-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-800-italic.ttf"; path = "../src/assets/fonts/poppins-latin-800-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0D07DE6E8DFC4B398DF58D81 /* poppins-latin-800-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-800-normal.ttf"; path = "../src/assets/fonts/poppins-latin-800-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AE98B5329F7E4C30BE392B05 /* poppins-latin-900-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-900-italic.ttf"; path = "../src/assets/fonts/poppins-latin-900-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		16BB300C700A412E9049B665 /* poppins-latin-900-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-900-normal.ttf"; path = "../src/assets/fonts/poppins-latin-900-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EB3D2E916F844B8AA69F341F /* poppins-latin-ext-100-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-100-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-100-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D695AD713CD04761A1A49450 /* poppins-latin-ext-100-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-100-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-100-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F6978BC44354441A99F3C25 /* poppins-latin-ext-200-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-200-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-200-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BF2D57EA34BA4083A7F5DB96 /* poppins-latin-ext-200-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-200-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-200-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0F520B7A20C7452BB910E71A /* poppins-latin-ext-300-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-300-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-300-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E45457932436404CBD883EAC /* poppins-latin-ext-300-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-300-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-300-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2666A56C10D942539A12AC2F /* poppins-latin-ext-400-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-400-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-400-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2E5814F3537D43898D831725 /* poppins-latin-ext-400-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-400-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-400-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7F8D0BC577674BFEA40F557C /* poppins-latin-ext-500-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-500-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-500-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		43111FBF37FC46D79E76CAB6 /* poppins-latin-ext-500-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-500-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-500-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5E6C41ECC2434B2B98B64FF6 /* poppins-latin-ext-600-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-600-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-600-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5F47A2EF6CFB48DC8C16E2C4 /* poppins-latin-ext-600-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-600-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-600-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2E0807FF545B4F4298233B28 /* poppins-latin-ext-700-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-700-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-700-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		16110C2E49E5463283FEE993 /* poppins-latin-ext-700-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-700-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-700-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		000027838D2544CA8DFD3265 /* poppins-latin-ext-800-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-800-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-800-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CF9723E4C358428081F81E0E /* poppins-latin-ext-800-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-800-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-800-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A5BE85840B6D4825A6F3DC2A /* poppins-latin-ext-900-italic.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-900-italic.ttf"; path = "../src/assets/fonts/poppins-latin-ext-900-italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90798D4DA25A4598844970D8 /* poppins-latin-ext-900-normal.ttf */ = {isa = PBXFileReference; name = "poppins-latin-ext-900-normal.ttf"; path = "../src/assets/fonts/poppins-latin-ext-900-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7699B88040F8A987B510C191 /* libPods-MyCruiseCalApp-MyCruiseCalAppTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C80B921A6F3F58F76C31292 /* libPods-MyCruiseCalApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* MyCruiseCalAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* MyCruiseCalAppTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = MyCruiseCalAppTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* MyCruiseCalApp */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				3EF8D45772566BD1DD436A93 /* PrivacyInfo.xcprivacy */,
+			);
+			name = MyCruiseCalApp;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-MyCruiseCalApp.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-MyCruiseCalApp-MyCruiseCalAppTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* MyCruiseCalApp */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* MyCruiseCalAppTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				4C537481647841B095184A13 /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* MyCruiseCalApp.app */,
+				00E356EE1AD99517003FC87E /* MyCruiseCalAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-MyCruiseCalApp.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-MyCruiseCalApp.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-MyCruiseCalApp-MyCruiseCalAppTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-MyCruiseCalApp-MyCruiseCalAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4C537481647841B095184A13 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				1EFED40E415D486F8012352F /* poppins-latin-100-italic.ttf */,
+				0DE258E2D06E48E39B016BE1 /* poppins-latin-100-normal.ttf */,
+				25F72E3F57F94E90AFD6F1A6 /* poppins-latin-200-italic.ttf */,
+				E429AF7A3A8F4CFFB5C9451E /* poppins-latin-200-normal.ttf */,
+				DD025C116BCC4F83AD456839 /* poppins-latin-300-italic.ttf */,
+				A550D82F020B41959BD01623 /* poppins-latin-300-normal.ttf */,
+				B9349D0B838448B58C6CE644 /* poppins-latin-400-italic.ttf */,
+				90C873D4DBDB4E0482889491 /* poppins-latin-400-normal.ttf */,
+				70D1ACFF340144D2B09368C5 /* poppins-latin-500-italic.ttf */,
+				70A360EC73A44C2C89FCF649 /* poppins-latin-500-normal.ttf */,
+				2EEF53A56F6C47E4994822F4 /* poppins-latin-600-italic.ttf */,
+				BBDF8FDB7AAD45B0AF2B11F6 /* poppins-latin-600-normal.ttf */,
+				EF20AF25A40F4607BD2F66DE /* poppins-latin-700-italic.ttf */,
+				7418461C11064A019055C042 /* poppins-latin-700-normal.ttf */,
+				81C30DB5DD5A42DF94C3763C /* poppins-latin-800-italic.ttf */,
+				0D07DE6E8DFC4B398DF58D81 /* poppins-latin-800-normal.ttf */,
+				AE98B5329F7E4C30BE392B05 /* poppins-latin-900-italic.ttf */,
+				16BB300C700A412E9049B665 /* poppins-latin-900-normal.ttf */,
+				EB3D2E916F844B8AA69F341F /* poppins-latin-ext-100-italic.ttf */,
+				D695AD713CD04761A1A49450 /* poppins-latin-ext-100-normal.ttf */,
+				3F6978BC44354441A99F3C25 /* poppins-latin-ext-200-italic.ttf */,
+				BF2D57EA34BA4083A7F5DB96 /* poppins-latin-ext-200-normal.ttf */,
+				0F520B7A20C7452BB910E71A /* poppins-latin-ext-300-italic.ttf */,
+				E45457932436404CBD883EAC /* poppins-latin-ext-300-normal.ttf */,
+				2666A56C10D942539A12AC2F /* poppins-latin-ext-400-italic.ttf */,
+				2E5814F3537D43898D831725 /* poppins-latin-ext-400-normal.ttf */,
+				7F8D0BC577674BFEA40F557C /* poppins-latin-ext-500-italic.ttf */,
+				43111FBF37FC46D79E76CAB6 /* poppins-latin-ext-500-normal.ttf */,
+				5E6C41ECC2434B2B98B64FF6 /* poppins-latin-ext-600-italic.ttf */,
+				5F47A2EF6CFB48DC8C16E2C4 /* poppins-latin-ext-600-normal.ttf */,
+				2E0807FF545B4F4298233B28 /* poppins-latin-ext-700-italic.ttf */,
+				16110C2E49E5463283FEE993 /* poppins-latin-ext-700-normal.ttf */,
+				000027838D2544CA8DFD3265 /* poppins-latin-ext-800-italic.ttf */,
+				CF9723E4C358428081F81E0E /* poppins-latin-ext-800-normal.ttf */,
+				A5BE85840B6D4825A6F3DC2A /* poppins-latin-ext-900-italic.ttf */,
+				90798D4DA25A4598844970D8 /* poppins-latin-ext-900-normal.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* MyCruiseCalAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyCruiseCalAppTests" */;
+			buildPhases = (
+				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
+				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = MyCruiseCalAppTests;
+			productName = MyCruiseCalAppTests;
+			productReference = 00E356EE1AD99517003FC87E /* MyCruiseCalAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* MyCruiseCalApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyCruiseCalApp" */;
+			buildPhases = (
+				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
+				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyCruiseCalApp;
+			productName = MyCruiseCalApp;
+			productReference = 13B07F961A680F5B00A75B9A /* MyCruiseCalApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyCruiseCalApp" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* MyCruiseCalApp */,
+				00E356ED1AD99517003FC87E /* MyCruiseCalAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				A0BDD5CBFC1F51E7FCE2FE58 /* PrivacyInfo.xcprivacy in Resources */,
+				D1D4C6BA356C4D6EB7123F21 /* poppins-latin-100-italic.ttf in Resources */,
+				929172FA14284678ABEC81E5 /* poppins-latin-100-normal.ttf in Resources */,
+				225F5A2006514A4DB94365AE /* poppins-latin-200-italic.ttf in Resources */,
+				A544A8D55494482AADBB269A /* poppins-latin-200-normal.ttf in Resources */,
+				F6E08DA237A44FF7BE8BFD8D /* poppins-latin-300-italic.ttf in Resources */,
+				74ACE7736B834BD5B0633EE5 /* poppins-latin-300-normal.ttf in Resources */,
+				214ECB62939441F9A144BCB9 /* poppins-latin-400-italic.ttf in Resources */,
+				89FBCEC24AEF4C97809F6C67 /* poppins-latin-400-normal.ttf in Resources */,
+				D630D541929A4B1AA35A18DE /* poppins-latin-500-italic.ttf in Resources */,
+				6D565381523048868EC2DCC0 /* poppins-latin-500-normal.ttf in Resources */,
+				6E0D71CB5E3A4F30B681A256 /* poppins-latin-600-italic.ttf in Resources */,
+				6DECCDAFCA4747D09427C65B /* poppins-latin-600-normal.ttf in Resources */,
+				C05B16FE73A94461AA5769CA /* poppins-latin-700-italic.ttf in Resources */,
+				3E2C81DD8B6A44DD9C02DFE3 /* poppins-latin-700-normal.ttf in Resources */,
+				88BC642B566C48A9BBB71C64 /* poppins-latin-800-italic.ttf in Resources */,
+				F9B86CC696934BD4AFC5800F /* poppins-latin-800-normal.ttf in Resources */,
+				9C37A92D689D4521B90E956E /* poppins-latin-900-italic.ttf in Resources */,
+				3E94E5503DDB49F3B0A1822C /* poppins-latin-900-normal.ttf in Resources */,
+				3CDA8945BC084B27A6E4C2BC /* poppins-latin-ext-100-italic.ttf in Resources */,
+				C7D0F05981F14C56BAC78F22 /* poppins-latin-ext-100-normal.ttf in Resources */,
+				03207598B13743C3B0C81C0F /* poppins-latin-ext-200-italic.ttf in Resources */,
+				5DE971A2CAC94EA58057688E /* poppins-latin-ext-200-normal.ttf in Resources */,
+				4EC69C8A3152480CAAD635F1 /* poppins-latin-ext-300-italic.ttf in Resources */,
+				9FE1C490F477455184D7C134 /* poppins-latin-ext-300-normal.ttf in Resources */,
+				A3BDE6B4A59E428BA5AF8DCC /* poppins-latin-ext-400-italic.ttf in Resources */,
+				48304C0A4450401989536445 /* poppins-latin-ext-400-normal.ttf in Resources */,
+				78034D945BD04B2F9F1F68DD /* poppins-latin-ext-500-italic.ttf in Resources */,
+				564E55F7E0914DA0A6A86067 /* poppins-latin-ext-500-normal.ttf in Resources */,
+				EECF9B08FC554BCE8B1C58CE /* poppins-latin-ext-600-italic.ttf in Resources */,
+				A359F349C5EB431BA3F65D2C /* poppins-latin-ext-600-normal.ttf in Resources */,
+				70DAF7255C27466488A847C3 /* poppins-latin-ext-700-italic.ttf in Resources */,
+				64D2F108B9214489B334F34C /* poppins-latin-ext-700-normal.ttf in Resources */,
+				9451F3994CB041ABBCB8A251 /* poppins-latin-ext-800-italic.ttf in Resources */,
+				87D25539A18F45CDB947FBA4 /* poppins-latin-ext-800-normal.ttf in Resources */,
+				1D22E92389D54E9F9F6876DB /* poppins-latin-ext-900-italic.ttf in Resources */,
+				910CD34F10FC425CA5AF8042 /* poppins-latin-ext-900-normal.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyCruiseCalApp-MyCruiseCalAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyCruiseCalApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp/Pods-MyCruiseCalApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCruiseCalApp-MyCruiseCalAppTests/Pods-MyCruiseCalApp-MyCruiseCalAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* MyCruiseCalAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* MyCruiseCalApp */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-MyCruiseCalApp-MyCruiseCalAppTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyCruiseCalAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCruiseCalApp.app/MyCruiseCalApp";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-MyCruiseCalApp-MyCruiseCalAppTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = MyCruiseCalAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCruiseCalApp.app/MyCruiseCalApp";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-MyCruiseCalApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C2VR45U9SF;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = MyCruiseCalApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyCruiseCal;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = MyCruiseCalApp;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-MyCruiseCalApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C2VR45U9SF;
+				INFOPLIST_FILE = MyCruiseCalApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyCruiseCal;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = MyCruiseCalApp;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CXX = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CXX = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				USE_HERMES = true;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyCruiseCalAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyCruiseCalApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyCruiseCalApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

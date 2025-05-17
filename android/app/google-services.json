@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1034163217798",
+    "project_id": "mycruisecal",
+    "storage_bucket": "mycruisecal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034163217798:android:d9c558144fd22439aa7807",
+        "android_client_info": {
+          "package_name": "com.mycruisecalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034163217798-hnq30go65j35vio6sbki1t6h8psvtgi6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycruisecalapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1034163217798-9glb7l9dpa7u6b8fde1c4nmv2uo91jan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6MXJ9mMN8nAatR50tfJunPvdEuSjhy8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034163217798-9glb7l9dpa7u6b8fde1c4nmv2uo91jan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

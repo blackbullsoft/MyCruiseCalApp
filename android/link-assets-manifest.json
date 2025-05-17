@@ -1,0 +1,149 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/poppins-latin-100-italic.ttf",
+      "sha1": "e36f352c74b96857b25be97111d9053acc72d664"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-100-normal.ttf",
+      "sha1": "228fc5674b8622313ed59682184b7627fa6bb512"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-200-italic.ttf",
+      "sha1": "a513c650ac37973ed78731e89a4e29b66929771a"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-200-normal.ttf",
+      "sha1": "5f3b44a5335c03d69e013470f21bd3e921aacc94"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-300-italic.ttf",
+      "sha1": "9dd6b76dfe918e019dfada0cb135cc3102009128"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-300-normal.ttf",
+      "sha1": "e32632db185ee7fb86a59c04632800bb9471cacb"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-400-italic.ttf",
+      "sha1": "d65236da21f9563120d69c1267d50d103c30f27b"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-400-normal.ttf",
+      "sha1": "c1488d0584f0b08dd1ebd3542cbfc02a51879e7e"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-500-italic.ttf",
+      "sha1": "b2fa4fd6a505440ed3fe324ddf52b6e49400c000"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-500-normal.ttf",
+      "sha1": "e996ab20f72920a4b8c5eb93df0fdbcd937de748"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-600-italic.ttf",
+      "sha1": "3b947f8c79fe5f811fea0e6d22e49332f770f93d"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-600-normal.ttf",
+      "sha1": "983c9c9b3cd3255ee26ae35d0e9379f13dd5ab5a"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-700-italic.ttf",
+      "sha1": "53f80a3b7d9ad9b8674f019fadc5f9244e9b683c"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-700-normal.ttf",
+      "sha1": "824218e71c4d903b7bc29872db5f4b9a6428faa5"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-800-italic.ttf",
+      "sha1": "985ab2ea4d3c7cc8a5270c2755b37300c523e438"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-800-normal.ttf",
+      "sha1": "aa7625e63a999f434bef96ac6ee49fdc771b448c"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-900-italic.ttf",
+      "sha1": "b583f60028496d3178f794421cc4ca0811512eef"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-900-normal.ttf",
+      "sha1": "c0a9ce8cb5d10e277e89fa37a096dedd5c0d8276"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-100-italic.ttf",
+      "sha1": "b8088b83ba0736d5bbd9c236ea25208fc785ebe7"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-100-normal.ttf",
+      "sha1": "e6a84e1dc8eec7c5e8b234d360cd3a3df23f2113"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-200-italic.ttf",
+      "sha1": "68a66727d0d8dbd46fe7fd80cae689fcc6db4a35"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-200-normal.ttf",
+      "sha1": "eae6a2022b40a8a5c18c9523e7686506d7fa8c7f"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-300-italic.ttf",
+      "sha1": "60280af0732611d4384c9ae0c887aa75835700ef"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-300-normal.ttf",
+      "sha1": "816aed5d6e34eb5431b8096f8bb119a07fa8c098"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-400-italic.ttf",
+      "sha1": "e3658488560510b30bdfb257a15c36de7ea75bd4"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-400-normal.ttf",
+      "sha1": "f16cf1f8f8dc1d027d19c4119585143798b42b68"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-500-italic.ttf",
+      "sha1": "4143680d0eda9bf37c712a0cecec89fcd214a82e"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-500-normal.ttf",
+      "sha1": "9b64686271a5132ab731955e7abd98e5071adeec"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-600-italic.ttf",
+      "sha1": "e09b0fc48aca4c89f04c2d8282a69bbbd6054521"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-600-normal.ttf",
+      "sha1": "cab06d496f7f2cf51e3d220531a5d168465ba548"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-700-italic.ttf",
+      "sha1": "d6e9f48b53ce205416887462bbceb67a58affff8"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-700-normal.ttf",
+      "sha1": "cd852ad85e30c32adf4cbf701f544ad4f1f95c13"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-800-italic.ttf",
+      "sha1": "d184eaa1634b9cdd4cb5679d35a499714f65ef33"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-800-normal.ttf",
+      "sha1": "96a98dda4c3f6b7bf2bb5008e88d4564260f46f2"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-900-italic.ttf",
+      "sha1": "e1b5cbf498d7b2e09838d3172652620415ae5a05"
+    },
+    {
+      "path": "src/assets/fonts/poppins-latin-ext-900-normal.ttf",
+      "sha1": "ac8bd13f8db1f48f393a909166e804d6e2df9d9b"
+    }
+  ]
+}
