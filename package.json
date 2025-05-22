@@ -8,15 +8,16 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "clean":"cd android && gradlew clean",
-    "buildRelease":"cd android && gradlew clean assembleRelease",
-    "buildReleasebundle":"cd android && gradlew bundleRelease"
+    "clean": "cd android && gradlew clean",
+    "buildRelease": "cd android && gradlew clean assembleRelease",
+    "buildReleasebundle": "cd android && gradlew bundleRelease"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-native-documents/picker": "^10.1.2",
-    "@react-native-firebase/app": "^21.0.0",
-    "@react-native-firebase/auth": "^21.0.0",
+    "@react-native-firebase/app": "^18.0.0",
+    "@react-native-firebase/auth": "^18.0.0",
+    "@react-native-firebase/messaging": "^18.0.0",
     "@react-native-google-signin/google-signin": "^13.1.0",
     "@react-native-picker/picker": "^2.8.0",
     "@react-navigation/drawer": "^6.7.2",

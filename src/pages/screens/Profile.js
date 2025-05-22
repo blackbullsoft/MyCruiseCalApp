@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Alert} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  ActivityIndicator,
+  Alert,
+} from 'react-native';
 import axiosInstance from '../../api/axiosInstance';
-import { getFontFamily } from '../../utils/fontFamily';
+import {getFontFamily} from '../../utils/fontFamily';
 import CustomButton from '../../components/CustomButton';
 
-const Profile = ({ navigation }) => {
+const Profile = ({navigation}) => {
   const [query, setQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCruise, setSelectedCruise] = useState(null);
@@ -18,63 +27,90 @@ const Profile = ({ navigation }) => {
   const [duration, setDuration] = useState(null);
 
   useEffect(() => {
-     if (selectedCruise) {
+    if (selectedCruise) {
       fetchShips(selectedCruise?.cruiseline_code, selectedCruise?.ship_code);
-     }
+    }
   }, [selectedCruise]);
 
   const handleNavigateToItinerary = () => {
     // if (selectedTourCode) {
-      navigation.navigate('Itinerary', {
-        tourCode: selectedTourCode,
-        date: date,
-        heading1: heading,
-        duration1: duration
-      });
-    // } 
+    navigation.navigate('Itinerary', {
+      tourCode: selectedTourCode,
+      date: date,
+      heading1: heading,
+      duration1: duration,
+    });
+    // }
     // else {
     //   Alert.alert('No Tour Selected', 'Please select a tour before continuing.');
     // }
   };
 
-  const filterCruiseLines = async (text) => {
+  const filterCruiseLines = async text => {
     setQuery(text);
-    if (text) {
-      try {
-        setLoading(true);
-        const response = await axiosInstance.post('/autocomplete', { searchText: text });
-        if (Array.isArray(response.data.data)) {
-          const cruiseLineObjects = response.data.data.map((item, index) => ({
-            id: index.toString(),
-            title: item.cruiseline_name,
-            cruiseline_code: item.cruiseline_code,
-            ship_code: item.ship_code,
-            ship_name: item.ship_name,
-          }));
 
-          const uniqueCruiseLines = Array.from(new Set(cruiseLineObjects.map(item => `${item.cruiseline_code}-${item.ship_code}`)))
-            .map(code => {
-              return cruiseLineObjects.find(item => `${item.cruiseline_code}-${item.ship_code}` === code);
-            });
-
-          setFilteredData(uniqueCruiseLines);
-        } else {
-          setFilteredData([]);
-        }
-
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching cruise lines:', error);
-        setLoading(false);
-      }
-    } else {
+    if (!text) {
       setFilteredData([]);
-      setSelectedShip(null)
+      setSelectedShip(null);
       setSelectedCruise(null);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await axiosInstance.post('/autocomplete', {
+        searchText: text,
+      });
+      const cruiseData = response?.data?.data;
+      if (!Array.isArray(cruiseData)) {
+        console.warn('Unexpected response structure:', response.data);
+        setFilteredData([]);
+        return;
+      }
+
+      const cruiseLineObjects = cruiseData.map((item, index) => ({
+        id: index.toString(),
+        title: item.cruiseline_name,
+        cruiseline_code: item.cruiseline_code,
+        ship_code: item.ship_code,
+        ship_name: item.ship_name,
+      }));
+
+      // Deduplicate using cruiseline_code + ship_code
+      const uniqueCruiseLines = Array.from(
+        new Set(
+          cruiseLineObjects.map(
+            item => `${item.cruiseline_code}-${item.ship_code}`,
+          ),
+        ),
+      ).map(code =>
+        cruiseLineObjects.find(
+          item => `${item.cruiseline_code}-${item.ship_code}` === code,
+        ),
+      );
+
+      setFilteredData(uniqueCruiseLines);
+    } catch (error) {
+      console.error('Error fetching cruise lines:', error);
+
+      if (error.response) {
+        // Server responded with status outside 2xx
+        console.error('API Error Response:', error.response.data);
+      } else if (error.request) {
+        // Request was made but no response received
+        console.error('No response received:', error.request);
+      } else {
+        // Something else went wrong
+        console.error('Request setup error:', error.message);
+      }
+
+      setFilteredData([]);
+    } finally {
+      setLoading(false);
     }
   };
 
- 
   const fetchShips = async (cruiselineCode, shipCode) => {
     try {
       setLoading(true);
@@ -83,7 +119,7 @@ const Profile = ({ navigation }) => {
         ship_code: shipCode,
       });
       const data = response.data.data;
-      console.log()
+      console.log();
       setShips(data);
       if (data.length > 0) {
         setSelectedTourCode(data[0].tour_code);
@@ -100,8 +136,9 @@ const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View>
-
-        <Text style={styles.text}>The easy way to add your cruise itinerary to your calendar</Text>
+        <Text style={styles.text}>
+          The easy way to add your cruise itinerary to your calendar
+        </Text>
 
         {/* Searchable Text Input */}
         <TextInput
@@ -109,7 +146,7 @@ const Profile = ({ navigation }) => {
           value={query}
           onChangeText={filterCruiseLines}
           placeholder="Select Cruise Ship"
-          placeholderTextColor={"#000"}
+          placeholderTextColor={'#000'}
         />
         {loading && <ActivityIndicator size="large" color="#5779B9" />}
         {/* Display Filtered Cruise Lines */}
@@ -117,16 +154,15 @@ const Profile = ({ navigation }) => {
           <FlatList
             data={filteredData}
             style={styles.shadowEffect}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
+            keyExtractor={item => item.id}
+            renderItem={({item}) => (
               <TouchableOpacity
                 style={styles.item}
                 onPress={() => {
                   setSelectedCruise(item);
                   setFilteredData([]);
-                  setQuery(item.ship_name + " " + item.title);
-                }}
-              >
+                  setQuery(item.ship_name + ' ' + item.title);
+                }}>
                 <Text style={styles.itemText}>{item.ship_name}</Text>
                 <Text style={styles.itemText}>{item.title}</Text>
               </TouchableOpacity>
@@ -138,16 +174,17 @@ const Profile = ({ navigation }) => {
         {selectedCruise && (
           <TouchableOpacity
             style={styles.dropdown}
-            onPress={() => setIsDropdownVisible(!isDropdownVisible)}
-          >
+            onPress={() => setIsDropdownVisible(!isDropdownVisible)}>
             <Text style={styles.dropdownText}>
               {selectedShip
-                ? `${selectedShip.formatted_date} - ${selectedShip.cruise_name.replace(
-                  "from/to",
-                  selectedShip.from_port_code === selectedShip.to_port_code
-                    ? "Round Trip"
-                    : `${selectedShip.from_port_code}/${selectedShip.to_port_code}`
-                )} - (${selectedShip.duration} Nights)`
+                ? `${
+                    selectedShip.formatted_date
+                  } - ${selectedShip.cruise_name.replace(
+                    'from/to',
+                    selectedShip.from_port_code === selectedShip.to_port_code
+                      ? 'Round Trip'
+                      : `${selectedShip.from_port_code}/${selectedShip.to_port_code}`,
+                  )} - (${selectedShip.duration} Nights)`
                 : 'Choose Sailing'}
             </Text>
           </TouchableOpacity>
@@ -158,25 +195,26 @@ const Profile = ({ navigation }) => {
           <View style={styles.dropdownItemsContainer}>
             <FlatList
               data={ships}
-              keyExtractor={(item) => item.tour_code}
-              renderItem={({ item }) => (
+              keyExtractor={item => item.tour_code}
+              renderItem={({item}) => (
                 <TouchableOpacity
                   style={styles.dropdownItem}
                   onPress={() => {
                     setSelectedShip(item);
-                    setDate(item.departure_date)
+                    setDate(item.departure_date);
                     setHeading(item.cruise_name);
                     setDuration(item.duration);
                     setIsDropdownVisible(false);
-                  }}
-                >
+                  }}>
                   <Text style={styles.dropdownItemText}>
-                    {item?.formatted_date} - {item?.cruise_name.replace(
-                      "from/to",
+                    {item?.formatted_date} -{' '}
+                    {item?.cruise_name.replace(
+                      'from/to',
                       item?.from_port_code === item?.to_port_code
-                        ? "Round Trip"
-                        : `${item?.from_port_code}/${item?.to_port_code}`
-                    )} - ({item?.duration} Nights)
+                        ? 'Round Trip'
+                        : `${item?.from_port_code}/${item?.to_port_code}`,
+                    )}{' '}
+                    - ({item?.duration} Nights)
                   </Text>
                 </TouchableOpacity>
               )}
@@ -187,7 +225,10 @@ const Profile = ({ navigation }) => {
 
       {/* Show Itinerary Button */}
       {selectedShip && (
-        <CustomButton onPress={handleNavigateToItinerary} label={"Show Itinerary"} />
+        <CustomButton
+          onPress={handleNavigateToItinerary}
+          label={'Show Itinerary'}
+        />
       )}
     </View>
   );
@@ -200,7 +241,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: 'white',
-    justifyContent: "space-between"
+    justifyContent: 'space-between',
   },
   text: {
     fontFamily: getFontFamily('bold'),
@@ -224,8 +265,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     backgroundColor: '#fff',
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   itemText: {
     fontSize: 16,
@@ -234,7 +275,7 @@ const styles = StyleSheet.create({
   },
   shadowEffect: {
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
@@ -255,9 +296,9 @@ const styles = StyleSheet.create({
   },
   dropdownItemsContainer: {
     borderRadius: 2,
-    maxHeight: 300,  // Set max height for dropdown
+    maxHeight: 300, // Set max height for dropdown
     backgroundColor: 'white',
-    elevation: 5
+    elevation: 5,
   },
   dropdownItem: {
     padding: 10,

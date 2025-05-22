@@ -108,6 +108,7 @@ const Itinerary = ({navigation, route}) => {
         });
 
         setItineraryEventData(validatedEvents);
+        console.log('itenary length', validatedEvents.length);
       }
     } catch (error) {
       console.error('Error fetching itinerary events:', error);
@@ -201,7 +202,7 @@ const Itinerary = ({navigation, route}) => {
   const addEventsToCalendar = async () => {
     let successCount = 0;
     let failCount = 0;
-    let totalEvents = itineraryEventData.length;
+    const totalEvents = itineraryEventData.length;
 
     if (totalEvents === 0) {
       Alert.alert('No Events', 'There are no events to add to your calendar.');
@@ -217,120 +218,78 @@ const Itinerary = ({navigation, route}) => {
     });
 
     try {
-      // First, ensure we have the latest calendar permissions
+      // Get calendar permissions
       let hasPermission = false;
-
       if (Platform.OS === 'ios') {
         const authStatus = await RNCalendarEvents.authorizationStatus();
-        if (authStatus !== 'authorized') {
-          const requestStatus = await RNCalendarEvents.requestPermissions();
-          hasPermission = requestStatus === 'authorized';
-        } else {
-          hasPermission = true;
-        }
+        hasPermission =
+          authStatus === 'authorized' ||
+          (await RNCalendarEvents.requestPermissions()) === 'authorized';
       } else {
         hasPermission = await requestCalendarPermissions();
       }
 
-      if (!hasPermission) {
-        throw new Error('Calendar permission not granted');
-      }
+      if (!hasPermission) throw new Error('Calendar permission not granted');
 
-      // Get available calendars and find the default one
+      // Find a suitable calendar
       const calendars = await RNCalendarEvents.findCalendars();
-      let defaultCalendarId = null;
-
-      // First try to find the primary calendar
-      for (const cal of calendars) {
-        if (cal.isPrimary && cal.allowsModifications) {
-          defaultCalendarId = cal.id;
-          break;
-        }
-      }
-
-      // If no primary calendar found, use any calendar that allows modifications
-      if (!defaultCalendarId) {
-        for (const cal of calendars) {
-          if (cal.allowsModifications) {
-            defaultCalendarId = cal.id;
-            break;
-          }
-        }
-      }
-
-      if (!defaultCalendarId && calendars.length > 0) {
-        defaultCalendarId = calendars[0].id;
-      }
+      let defaultCalendarId =
+        calendars.find(cal => cal.isPrimary && cal.allowsModifications)?.id ||
+        calendars.find(cal => cal.allowsModifications)?.id ||
+        calendars[0]?.id;
 
       if (!defaultCalendarId) {
         throw new Error('No suitable calendar found on device');
       }
 
-      console.log('Using calendar ID:', defaultCalendarId);
-
-      // Process events in smaller batches
-      const BATCH_SIZE = 3; // Smaller batch size for more frequent UI updates
+      const BATCH_SIZE = 3;
 
       for (let i = 0; i < itineraryEventData.length; i += BATCH_SIZE) {
-        // Get the current batch of events
-        const batch = itineraryEventData.slice(
-          i,
-          Math.min(i + BATCH_SIZE, itineraryEventData.length),
-        );
+        const batch = itineraryEventData.slice(i, i + BATCH_SIZE);
 
-        // Process each event in the batch sequentially for better reliability
         for (const event of batch) {
-          const startDate = new Date(event.startDate);
-          // const endDate = new Date(event.endDate);
-          let endDateStr = event.endDate;
-          if (!event.endDate.endsWith('Z')) {
-            endDateStr += 'Z'; // ✅ add Z to indicate UTC if missing
-          }
-
-          const endDate = new Date(event.startDate); // set start date as end date to set the event of every day only.
-
-          endDate.setDate(endDate.getDate() + 1); // add 1 day for offset
-
-          if (!isValidDate(startDate) || !isValidDate(endDate)) {
-            console.error('Invalid date for event:', event);
-            failCount++;
-            continue;
-          }
-
           try {
-            // Format event details
-            const title = `${event.notes?.port_name || 'Cruise'} - ${
-              event.notes?.cruise_name || event.title
-            }`;
+            const startDate = new Date(event.startDate);
+            const endDate = new Date(event.startDate);
+            endDate.setDate(endDate.getDate() + 1);
+
+            if (!isValidDate(startDate) || !isValidDate(endDate)) {
+              console.error('Invalid date for event:', event);
+              failCount++;
+              continue;
+            }
+
+            const {
+              port_name = 'Cruise',
+              cruise_name = event.title,
+              arrival_date,
+              departure_date,
+              link = '',
+            } = event.notes || {};
+
+            const title = `${port_name} - ${cruise_name} [${event.tour_code}]`;
+
             const description =
-              `🚢 Cruise Event Details:\n\n` +
-              `Port: ${event.notes?.port_name || 'N/A'}\n` +
-              `Arrival: ${event.notes?.arrival_date || 'N/A'}\n` +
-              `Departure: ${event.notes?.departure_date || 'N/A'}\n\n` +
-              `More Info: ${event.notes?.link || ''}`;
+              `🚢 Cruise Itinerary Event\n\n` +
+              `🛳 Tour Code: ${event.tour_code}\n` +
+              `📌 Unique ID: ${event.unique_id}\n\n` +
+              `📍 Port: ${port_name}\n` +
+              `📅 Arrival: ${arrival_date || 'N/A'}\n` +
+              `📅 Departure: ${departure_date || 'N/A'}\n\n` +
+              `🔗 More Info: ${link}`;
 
-            // Add timestamp to make each event unique
-            const timestamp = Date.now().toString();
-            const uniqueTitle = `${title} [${timestamp.slice(-4)}]`;
-
-            // Save the event to calendar
-            const eventId = await RNCalendarEvents.saveEvent(uniqueTitle, {
+            const eventId = await RNCalendarEvents.saveEvent(title, {
               calendarId: defaultCalendarId,
               startDate: startDate.toISOString(),
               endDate: endDate.toISOString(),
-              description: description,
-              location: event.notes?.port_name || '',
+              description,
+              location: port_name,
               allDay: event.allDay || false,
-              alarms: [
-                {date: -60}, // 1 hour before
-              ],
-              notes: `Added at ${new Date().toLocaleTimeString()}`, // Help force refresh
-              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Explicit timezone
+              alarms: [{date: -60}], // 1 hour before
+              notes: `Added at ${new Date().toLocaleTimeString()}`,
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             });
-            console.log('events json ', {
-              startDate: startDate.toISOString(),
-              endDate: endDate.toISOString(),
-            });
+
             if (eventId) {
               console.log('Successfully added event:', eventId);
               successCount++;
@@ -339,11 +298,10 @@ const Itinerary = ({navigation, route}) => {
               failCount++;
             }
           } catch (err) {
-            console.error('Error saving event to calendar:', err);
+            console.error('Error saving event:', err);
             failCount++;
           }
 
-          // Update progress after each event
           setProgress({
             total: totalEvents,
             success: successCount,
@@ -352,17 +310,12 @@ const Itinerary = ({navigation, route}) => {
           });
         }
 
-        // Force refresh after each batch
         await forceCalendarRefresh(defaultCalendarId);
-
-        // Small pause between batches
         await new Promise(resolve => setTimeout(resolve, 300));
       }
 
-      // Final sync attempt
       await forceCalendarRefresh(defaultCalendarId);
 
-      // Final state updates
       setSavingEvents(false);
       setProgress({
         total: totalEvents,
@@ -372,7 +325,6 @@ const Itinerary = ({navigation, route}) => {
       });
 
       if (successCount > 0) {
-        // Launch calendar app on Android
         if (
           Platform.OS === 'android' &&
           NativeModules.CalendarModule?.launchCalendarApp
@@ -383,19 +335,16 @@ const Itinerary = ({navigation, route}) => {
         Alert.alert(
           'Success',
           `Successfully added ${successCount} events to your calendar.` +
-            (failCount > 0 ? `\n${failCount} events failed to save.` : '') +
-            '\n\nPlease check your calendar app to view the events.',
-          [
-            {
-              text: 'OK',
-              onPress: () => setEventsSaved(true),
-            },
-          ],
+            (failCount > 0 ? `\n${failCount} events failed.` : '') +
+            '\n\nPlease check your calendar.',
+          [{text: 'OK', onPress: () => setEventsSaved(true)}],
         );
       } else {
         Alert.alert('Error', 'Failed to add any events to your calendar.');
       }
     } catch (error) {
+      console.error('Calendar operation error:', error);
+
       setSavingEvents(false);
       setProgress({
         total: totalEvents,
@@ -405,9 +354,7 @@ const Itinerary = ({navigation, route}) => {
         error: error.message,
       });
 
-      // Provide more specific error messages
       let errorMessage = 'Failed to add events to calendar';
-
       if (error.message.includes('permission')) {
         errorMessage =
           'Calendar permission denied. Please enable calendar access in your device settings.';
@@ -416,7 +363,6 @@ const Itinerary = ({navigation, route}) => {
           'No suitable calendar found. Please set up a calendar app on your device.';
       }
 
-      console.error('Calendar operation error:', error);
       Alert.alert('Error', errorMessage);
     }
   };

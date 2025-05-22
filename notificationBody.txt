@@ -1,0 +1,31 @@
+{
+  
+  "calendarAction": "true",
+  "action": "update",
+  "eventId": "1612",
+  "title": "Cologne - River Rhein 8 days from/to Cologne [3496]",
+  "description": "🚢 Cruise Event Details:\n\nPort: Cologne\nArrival: 2025-04-30\nDeparture: 2025-04-23\n\nMore Info: https://www.projectexpedition.com/location///Cologne//?filter=Date::2025-04-23T09:41:48::2025-04-30&utm_source=cruisesandtours-41530-don-75396&utm_medium=referral&utm_campaign=tagent",
+  "location": "Cologne",
+  "startDate": "2025-04-23T00:00:00.000Z",
+  "endDate": "2025-04-24T00:00:00.000Z",
+  "allDay": true
+}
+
+
+{
+  "calendarAction": "true",
+  "action": "delete",
+  "eventId": "1612" // you need to save all the saved events to your backend. when user create any event to the calendar.
+}
+
+{
+  "calendarAction": "true",
+  "action": "create",
+  "title": "Cologne - River Rhein 8 days from/to Cologne [3496]",
+  "description": "🚢 Cruise Event Details:\n\nPort: Cologne\nArrival: 2025-04-30\nDeparture: 2025-04-23\n\nMore Info: https://www.projectexpedition.com/location///Cologne//?filter=Date::2025-04-23T09:41:48::2025-04-30&utm_source=cruisesandtours-41530-don-75396&utm_medium=referral&utm_campaign=tagent",
+  "location": "Cologne",
+  "startDate": "2025-04-23T00:00:00.000Z",
+  "endDate": "2025-04-24T00:00:00.000Z",
+  "allDay": true
+}
+
