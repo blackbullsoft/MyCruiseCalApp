@@ -9,8 +9,15 @@ import {Provider} from 'react-redux';
 import {usePushNotification} from './src/utility/pushNotificationService';
 import {handleNotificationAction} from './src/utility/calendarTrigger';
 import {check, PERMISSIONS, request, RESULTS} from 'react-native-permissions';
+// import axiosInstance from './src/api/axiosInstance';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const App = () => {
+  const axiosInstance = axios.create({
+    baseURL: 'https://cruisecal.blackbullsolution.com/api',
+    timeout: 10000,
+  });
   const requestCalendarPermissions = async () => {
     try {
       const writePermission = await request(PERMISSIONS.ANDROID.WRITE_CALENDAR);
@@ -67,6 +74,7 @@ const App = () => {
   useEffect(() => {
     calendarPermission();
   }, []);
+
   // Setup push notifications via hook
   usePushNotification({
     onNotification: async notification => {
@@ -106,9 +114,40 @@ const App = () => {
     },
     onTokenRefresh: token => {
       console.log('🔄 New FCM token:', token);
+      updateDeviceToken(token);
       // Send to your backend if needed
     },
   });
+
+  const updateDeviceToken = async token => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('userToken');
+      if (!jsonValue) {
+        console.log('Token not found. Please login again.');
+        return;
+      }
+
+      const parsed = JSON.parse(jsonValue);
+      const bearerToken = parsed?.token || parsed?.access_token || parsed;
+
+      const response = await axiosInstance.post(
+        '/updateDeviceToken',
+        {
+          device_token: token,
+          device_type: Platform.OS === 'android' ? 'android' : 'ios',
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${bearerToken}`,
+          },
+        },
+      );
+
+      console.log('Device token updated successfully:', response.data);
+    } catch (err) {
+      console.log('Error while updating device token:', err.message);
+    }
+  };
 
   return (
     <Provider store={store}>
