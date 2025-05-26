@@ -3,6 +3,8 @@ import {useEffect, useRef} from 'react';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Platform, PermissionsAndroid, Alert, Linking} from 'react-native';
+import PushNotification from 'react-native-push-notification';
+import {handleNotificationAction} from './calendarTrigger';
 
 export const usePushNotification = ({
   onNotification = () => {},
@@ -11,6 +13,75 @@ export const usePushNotification = ({
 } = {}) => {
   const messageListenerRef = useRef(null);
   const tokenRefreshListenerRef = useRef(null);
+
+  // useEffect(() => {
+  //   const initialize = async () => {
+  //     const hasPermission = await requestUserPermission();
+  //     if (!hasPermission) {
+  //       console.log('❌ Push notification permission denied');
+  //       return;
+  //     }
+
+  //     const token = await getToken();
+  //     if (token) {
+  //       onTokenRefresh(token);
+  //     }
+
+  //     tokenRefreshListenerRef.current = messaging().onTokenRefresh(token => {
+  //       AsyncStorage.setItem('fcmToken', token);
+  //       onTokenRefresh(token);
+  //     });
+
+  //     messageListenerRef.current = messaging().onMessage(
+  //       async remoteMessage => {
+  //         console.log('📩 Foreground message:', remoteMessage);
+  //         const title = remoteMessage.notification?.title || 'New Notification';
+  //         const message =
+  //           remoteMessage.notification?.body || 'You have a new message';
+  //         Alert.alert(
+  //           title,
+  //           message,
+  //           [
+  //             {
+  //               text: 'OK',
+  //               onPress: () => console.log('Notification dismissed'),
+  //             },
+  //           ],
+  //           {cancelable: true},
+  //         );
+  //         onNotification(remoteMessage);
+  //       },
+  //     );
+
+  //     messaging().onNotificationOpenedApp(remoteMessage => {
+  //       console.log('📨 Notification opened from background:', remoteMessage);
+  //       onNotificationOpened(remoteMessage);
+  //     });
+
+  //     const initialNotification = await messaging().getInitialNotification();
+  //     if (initialNotification) {
+  //       console.log('🚀 App opened from quit state:', initialNotification);
+  //       onNotificationOpened(initialNotification);
+  //     }
+
+  //     messaging().setBackgroundMessageHandler(async remoteMessage => {
+  //       console.log('🔕 Background message received:', remoteMessage);
+  //       onNotification(remoteMessage);
+  //       return null;
+  //     });
+  //   };
+
+  //   initialize();
+
+  //   return () => {
+  //     if (messageListenerRef.current) {
+  //       messageListenerRef.current();
+  //     }
+  //     if (tokenRefreshListenerRef.current) {
+  //       tokenRefreshListenerRef.current();
+  //     }
+  //   };
+  // }, []);
 
   useEffect(() => {
     const initialize = async () => {
@@ -30,27 +101,31 @@ export const usePushNotification = ({
         onTokenRefresh(token);
       });
 
+      // Foreground messages
       messageListenerRef.current = messaging().onMessage(
         async remoteMessage => {
           console.log('📩 Foreground message:', remoteMessage);
-          onNotification(remoteMessage);
+          handleFCMNotification(remoteMessage);
         },
       );
 
+      // When app is in background and user taps notification
       messaging().onNotificationOpenedApp(remoteMessage => {
         console.log('📨 Notification opened from background:', remoteMessage);
-        onNotificationOpened(remoteMessage);
+        // handleFCMNotification(remoteMessage);
       });
 
+      // When app is opened from a quit state by tapping notification
       const initialNotification = await messaging().getInitialNotification();
       if (initialNotification) {
         console.log('🚀 App opened from quit state:', initialNotification);
-        onNotificationOpened(initialNotification);
+        handleFCMNotification(initialNotification);
       }
 
+      // Background handler for Android
       messaging().setBackgroundMessageHandler(async remoteMessage => {
         console.log('🔕 Background message received:', remoteMessage);
-        onNotification(remoteMessage);
+        handleFCMNotification(remoteMessage);
         return null;
       });
     };
@@ -66,6 +141,42 @@ export const usePushNotification = ({
       }
     };
   }, []);
+
+  // Centralized handler
+  const handleFCMNotification = async remoteMessage => {
+    const data = remoteMessage?.data || {};
+
+    const title = remoteMessage?.notification?.title || 'New Notification';
+    const message =
+      remoteMessage?.notification?.body || 'You have a new message';
+
+    Alert.alert(
+      title,
+      message,
+      [
+        {
+          text: 'OK',
+          onPress: () => console.log('Notification dismissed'),
+        },
+      ],
+      {cancelable: true},
+    );
+
+    if (data.tour_code) {
+      try {
+        await handleNotificationAction({
+          cruise_name: data.cruise_name,
+          tour_code: data.tour_code,
+          booking_number: data.booking_number,
+          cabin_number: data.cabin_number,
+        });
+      } catch (error) {
+        console.error('❌ Error handling notification:', error);
+      }
+    } else {
+      console.log('ℹ️ Non-calendar message, ignoring for calendar logic.');
+    }
+  };
 
   const requestUserPermission = async () => {
     try {

@@ -139,7 +139,6 @@ const SubscribCalendar = () => {
 
     const tourCodeMatch = firstEvent.title.match(/\[(.*?)\]/);
     const tourCode = tourCodeMatch ? tourCodeMatch[1] : 'Unknown';
-
     return (
       <View style={styles.card}>
         <Text style={styles.cardTitle}>

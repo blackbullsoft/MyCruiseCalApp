@@ -272,6 +272,8 @@ const Itinerary = ({navigation, route}) => {
             const description =
               `🚢 Cruise Itinerary Event\n\n` +
               `🛳 Tour Code: ${event.tour_code}\n` +
+              `🛳 Booking Number: ${bookingNumber}\n` +
+              `🛳 Cabin Number: ${cabinNumber}\n` +
               `📌 Unique ID: ${event.unique_id}\n\n` +
               `📍 Port: ${port_name}\n` +
               `📅 Arrival: ${arrival_date || 'N/A'}\n` +

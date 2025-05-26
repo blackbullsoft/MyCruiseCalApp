@@ -83,10 +83,12 @@ const App = () => {
         const data = notification.data || {};
 
         if (data.tour_code) {
-          await handleNotificationAction({
-            cruise_name: data.cruise_name,
-            tour_code: data.tour_code,
-          });
+          // await handleNotificationAction({
+          //   cruise_name: data.cruise_name,
+          //   tour_code: data.tour_code,
+          //   booking_number: data.booking_number,
+          //   cabin_number: data.cabin_number,
+          // });
         } else {
           console.log('Non-calendar message, ignoring for calendar logic.');
         }
@@ -100,10 +102,12 @@ const App = () => {
         const data = notification.data || {};
 
         if (data.tour_code) {
-          await handleNotificationAction({
-            cruise_name: data.cruise_name,
-            tour_code: data.tour_code,
-          });
+          // await handleNotificationAction({
+          //   cruise_name: data.cruise_name,
+          //   tour_code: data.tour_code,
+          //   booking_number: data.booking_number,
+          //   cabin_number: data.cabin_number,
+          // });
         } else {
           console.log('Non-calendar message, ignoring for calendar logic.');
         }

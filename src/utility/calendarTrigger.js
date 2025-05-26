@@ -8,7 +8,7 @@ function isValidDate(d) {
 export async function handleNotificationAction(data) {
   try {
     console.log('📩 FCM Data Received:', data);
-    const {tour_code, cruise_name} = data;
+    const {cruise_name, tour_code, booking_number, cabin_number} = data;
 
     if (!tour_code) {
       console.warn('⚠️ Missing tour_code. Aborting...');
@@ -37,7 +37,7 @@ export async function handleNotificationAction(data) {
     const eventsToDelete = existingEvents.filter(event =>
       event?.title?.includes(`[${tour_code}]`),
     );
-
+    console.log('events to Delete', eventsToDelete);
     for (const event of eventsToDelete) {
       try {
         await RNCalendarEvents.removeEvent(event.id);
@@ -46,7 +46,7 @@ export async function handleNotificationAction(data) {
         console.warn(`⚠️ Failed to delete event ID: ${event.id}`, err);
       }
     }
-
+    // return;
     // Step 3: Fetch updated itinerary data
     let itineraryEvents = [];
     try {
@@ -86,6 +86,8 @@ export async function handleNotificationAction(data) {
       const description =
         `🛳 Cruise Itinerary Event\n\n` +
         `📌 Tour Code: ${tour_code}\n` +
+        `🛳 Booking Number: ${booking_number}\n` +
+        `🛳 Cabin Number: ${cabin_number}\n` +
         `🆔 Unique ID: ${event.unique_id || 'N/A'}\n\n` +
         `📍 Port: ${port_name}\n` +
         `📅 Arrival: ${arrival_date || 'N/A'}\n` +
