@@ -1,5 +1,6 @@
 import RNCalendarEvents from 'react-native-calendar-events';
 import axiosInstance from '../api/axiosInstance';
+import {formatTime} from '../pages/screens/Itinerary';
 
 function isValidDate(d) {
   return d instanceof Date && !isNaN(d);
@@ -74,25 +75,49 @@ export async function handleNotificationAction(data) {
 
       const {
         port_name = 'Cruise',
+        port_country,
+        port_description,
         arrival_date,
         departure_date,
         link = '',
       } = event.notes || {};
 
-      const title = `${port_name} - ${
-        cruise_name || event.title || ''
-      } [${tour_code}]`;
+      // const title = `${port_name} - ${
+      //   cruise_name || event.title || ''
+      // } [${tour_code}]`;
 
+      const title = `${port_name}, ${port_country} ${formatTime(
+        event.arrival,
+      )} - ${formatTime(event.departure)}`;
+
+      // const description =
+      //   `🛳 Cruise Itinerary Event\n\n` +
+      //   `📌 Tour Code: ${tour_code}\n` +
+      //   `🛳 Booking Number: ${booking_number}\n` +
+      //   `🛳 Cabin Number: ${cabin_number}\n` +
+      //   `🆔 Unique ID: ${event.unique_id || 'N/A'}\n\n` +
+      //   `📍 Port: ${port_name}\n` +
+      //   `📅 Arrival: ${arrival_date || 'N/A'}\n` +
+      //   `📅 Departure: ${departure_date || 'N/A'}\n\n` +
+      //   `🔗 Info: ${link}`;
       const description =
-        `🛳 Cruise Itinerary Event\n\n` +
-        `📌 Tour Code: ${tour_code}\n` +
+        `🚢 Cruise Itinerary Event\n\n` +
+        `${port_name}, ${port_country || ''} ${formatTime(
+          event.arrival,
+        )} - ${formatTime(event.departure)}\n\n` +
+        `${port_description || ''}\n` +
+        `🛳 Tour Code: ${tour_code}\n` +
         `🛳 Booking Number: ${booking_number}\n` +
         `🛳 Cabin Number: ${cabin_number}\n` +
-        `🆔 Unique ID: ${event.unique_id || 'N/A'}\n\n` +
+        `📌 Unique ID: ${event.unique_id}\n\n` +
         `📍 Port: ${port_name}\n` +
         `📅 Arrival: ${arrival_date || 'N/A'}\n` +
         `📅 Departure: ${departure_date || 'N/A'}\n\n` +
-        `🔗 Info: ${link}`;
+        `🔗 Available excursions here: ${link}`;
+      // const description =
+      //   `🛳 Tour Code: ${event.tour_code}\n\n` +
+      //   `${port_description || ''}\n` +
+      //   `Available excursions here: ${link}`;
 
       try {
         const createdId = await RNCalendarEvents.saveEvent(title, {

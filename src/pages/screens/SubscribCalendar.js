@@ -72,9 +72,12 @@ const SubscribCalendar = () => {
         event =>
           event.description &&
           event.description.includes('Cruise Itinerary Event'),
+
+        // event.description.includes('Available excursions here'),
       );
 
-      const groupedEvents = groupEventsByCruiseName(filteredEvents);
+      // const groupedEvents = groupEventsByCruiseName(filteredEvents);
+      const groupedEvents = groupEventsByTourCode(filteredEvents);
       setCruiseEvents(groupedEvents);
     } catch (error) {
       console.error('Error fetching calendar events:', error);
@@ -119,7 +122,29 @@ const SubscribCalendar = () => {
       events: value,
     }));
   };
+  const extractTourCode = description => {
+    const match = description.match(/🛳 Tour Code:\s*(\w+)/);
+    return match ? match[1] : 'Unknown Tour Code';
+  };
+  const groupEventsByTourCode = events => {
+    const grouped = events.reduce((acc, event) => {
+      const tourCode = extractTourCode(event.description);
+      if (!acc[tourCode]) acc[tourCode] = [];
+      acc[tourCode].push(event);
+      return acc;
+    }, {});
 
+    Object.keys(grouped).forEach(tourCode => {
+      grouped[tourCode].sort(
+        (a, b) => new Date(a.startDate) - new Date(b.startDate),
+      );
+    });
+
+    return Object.entries(grouped).map(([key, value]) => ({
+      group: key,
+      events: value,
+    }));
+  };
   const formatDate = dateString => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');
@@ -137,14 +162,14 @@ const SubscribCalendar = () => {
     const endDate = new Date(lastEvent.endDate);
     endDate.setDate(endDate.getDate() - 1); // Adjust for all-day event ending next day
 
-    const tourCodeMatch = firstEvent.title.match(/\[(.*?)\]/);
-    const tourCode = tourCodeMatch ? tourCodeMatch[1] : 'Unknown';
+    // const tourCodeMatch = firstEvent.title.match(/\[(.*?)\]/);
+    // const tourCode = tourCodeMatch ? tourCodeMatch[1] : 'Unknown';
     return (
       <View style={styles.card}>
         <Text style={styles.cardTitle}>
           {index + 1}. {item.group}
         </Text>
-        <Text style={styles.cardText}>🛳 Tour Code: {tourCode}</Text>
+        <Text style={styles.cardText}>🛳 Tour Code: {item.group}</Text>
         <Text style={styles.cardText}>
           📅 {formatDate(startDate)} - {formatDate(endDate)}
         </Text>

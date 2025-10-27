@@ -13,6 +13,7 @@ import {
   StatusBar,
   Platform,
   NativeModules,
+  Linking,
 } from 'react-native';
 import axios from 'axios';
 import RNCalendarEvents from 'react-native-calendar-events';
@@ -22,13 +23,17 @@ import LinearGradient from 'react-native-linear-gradient';
 import {format, addDays} from 'date-fns';
 import {check, PERMISSIONS, request, RESULTS} from 'react-native-permissions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import downArrow from '../../assets/images/down-arrow.png';
 // Create an axios instance with a timeout to avoid hanging requests
 const axiosInstance = axios.create({
   baseURL: 'https://cruisecal.blackbullsolution.com/api',
   timeout: 10000, // Add timeout to prevent hanging requests
 });
 
+export const formatTime = timeString => {
+  const [hours, minutes] = timeString.split(':');
+  return `${hours}:${minutes}`;
+};
 const Itinerary = ({navigation, route}) => {
   const {tourCode, date, heading1, duration1} = route.params;
 
@@ -48,7 +53,11 @@ const Itinerary = ({navigation, route}) => {
     failed: 0,
     processing: false,
   });
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
+  const toggleExpand = index => {
+    setExpandedIndex(prev => (prev === index ? null : index));
+  };
   // Fetch data on component mount
   useEffect(() => {
     const loadData = async () => {
@@ -158,11 +167,12 @@ const Itinerary = ({navigation, route}) => {
 
   // Utility to calculate and format dates
   const calculateDateShow = useCallback((baseDate, dayOffset) => {
+    console.log('baseDate', baseDate);
     if (!baseDate) return '';
-
     try {
       const parsedDate = new Date(baseDate);
-      return format(addDays(parsedDate, dayOffset - 1), 'MMM-dd-yyyy');
+      // return format(addDays(parsedDate, dayOffset - 1), 'MMM-dd-yyyy');
+      return parsedDate;
     } catch (error) {
       console.error('Error formatting date:', error);
       return '';
@@ -197,6 +207,20 @@ const Itinerary = ({navigation, route}) => {
       console.log('Calendar refresh error:', error);
     }
   };
+
+  function getCruiseDuration(departureDate, arrivalDate) {
+    const start = new Date(departureDate);
+    const end = new Date(arrivalDate);
+
+    // Calculate difference in milliseconds
+    const diffTime = end.getTime() - start.getTime();
+
+    // Convert to days
+    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+    const nights = days - 1;
+
+    return {days, nights};
+  }
 
   // Function to add events to calendar with improved error handling
   const addEventsToCalendar = async () => {
@@ -244,48 +268,100 @@ const Itinerary = ({navigation, route}) => {
 
       const BATCH_SIZE = 3;
 
-      for (let i = 0; i < itineraryEventData.length; i += BATCH_SIZE) {
-        const batch = itineraryEventData.slice(i, i + BATCH_SIZE);
+      for (let i = 0; i < itineraryData.length; i += BATCH_SIZE) {
+        const batch = itineraryData.slice(i, i + BATCH_SIZE);
 
-        for (const event of batch) {
+        for (const [j, event] of batch.entries()) {
+          console.log('thidsdsds', event);
+          const isFirst = i === 0 && j === 0;
+
+          if (isFirst) {
+            console.log('🔰 First event being processed:', event);
+          }
+
           try {
             const startDate = new Date(event.startDate);
             const endDate = new Date(event.startDate);
             endDate.setDate(endDate.getDate() + 1);
+
+            const data = getCruiseDuration(
+              event?.departure_date,
+              event?.arrival_date,
+            );
 
             if (!isValidDate(startDate) || !isValidDate(endDate)) {
               console.error('Invalid date for event:', event);
               failCount++;
               continue;
             }
+            console.log('startDatestartDate', startDate, endDate);
+            console.log('Eventdata', event);
 
             const {
-              port_name = 'Cruise',
-              cruise_name = event.title,
+              port = 'Cruise',
+              port_country,
+              port_description,
+              cruise_name,
               arrival_date,
               departure_date,
               link = '',
-            } = event.notes || {};
+            } = event || {};
 
-            const title = `${port_name} - ${cruise_name} [${event.tour_code}]`;
+            // const title = `${port} - ${cruise_name} [${event.tour_code}]`;
+            let title = '';
+            let description = '';
 
-            const description =
-              `🚢 Cruise Itinerary Event\n\n` +
-              `🛳 Tour Code: ${event.tour_code}\n` +
-              `🛳 Booking Number: ${bookingNumber}\n` +
-              `🛳 Cabin Number: ${cabinNumber}\n` +
-              `📌 Unique ID: ${event.unique_id}\n\n` +
-              `📍 Port: ${port_name}\n` +
-              `📅 Arrival: ${arrival_date || 'N/A'}\n` +
-              `📅 Departure: ${departure_date || 'N/A'}\n\n` +
-              `🔗 More Info: ${link}`;
+            if (isFirst) {
+              title = cruise_name;
+              description =
+                `🚢 Cruise Itinerary Event\n\n` +
+                `${port}, ${port_country || ''}\nArrival Time ${formatTime(
+                  event.arrival_time,
+                )}\nDeparture Time ${formatTime(event.departure_time)}\n\n` +
+                `Tour is  ${data?.days} days & ${data?.nights} night long \n\n` +
+                // `🚢 ${cruise_name || ''}\n` +
+                `📰 ${port_description || ''}\n` +
+                // `🛳 Tour Code: ${event.tour_code}\n` +
+                `🛳 Booking Number: ${bookingNumber}\n` +
+                `🛳 Cabin Number: ${cabinNumber}\n` +
+                // `📌 Unique ID: ${event.unique_id}\n\n` +
+                `📍 Port: ${port}\n` +
+                `📅 Arrival: ${arrival_date || 'N/A'}\n` +
+                `📅 Departure: ${departure_date || 'N/A'}\n\n` +
+                `🔗 Available excursions here: ${link}`;
+            } else {
+              title = `${port}, ${port_country} ${formatTime(
+                event.arrival_time,
+              )} - ${formatTime(event.departure_time)}`;
+              description =
+                `🚢 Cruise Itinerary Event\n\n` +
+                `${port}, ${port_country || ''}\nArrival Time ${formatTime(
+                  event.arrival_time,
+                )}\nDeparture Time ${formatTime(event.departure_time)}\n\n` +
+                // `Tour is  ${data?.days} days & ${data?.nights} night long \n\n` +
+                // `🚢 ${cruise_name || ''}\n` +
+                `📰 ${port_description || ''}\n\n` +
+                // `🛳 Tour Code: ${event.tour_code}\n` +
+                // `🛳 Booking Number: ${bookingNumber}\n` +
+                // `🛳 Cabin Number: ${cabinNumber}\n` +
+                // `📌 Unique ID: ${event.unique_id}\n\n` +
+                // `📍 Port: ${port}\n` +
+                // `📅 Arrival: ${arrival_date || 'N/A'}\n` +
+                // `📅 Departure: ${departure_date || 'N/A'}\n\n` +
+                `🔗 Available excursions here: ${link}`;
+            }
+
+            // const description =
+            //   `🛳 Tour Code: ${event.tour_code}\n\n` +
+            //   `${port_description || ''}\n` +
+            //   `Available excursions here: ${link}`;
 
             const eventId = await RNCalendarEvents.saveEvent(title, {
               calendarId: defaultCalendarId,
               startDate: startDate.toISOString(),
               endDate: endDate.toISOString(),
               description,
-              location: port_name,
+              location: port,
               allDay: event.allDay || false,
               alarms: [{date: -60}], // 1 hour before
               notes: `Added at ${new Date().toLocaleTimeString()}`,
@@ -369,6 +445,14 @@ const Itinerary = ({navigation, route}) => {
     }
   };
 
+  console.log(
+    'getCruiseDuration',
+    getCruiseDuration(
+      itineraryData[0]?.departure_date,
+      itineraryData[0]?.arrival_date,
+    ),
+  );
+
   // Save booking data to server
   const handleSaveData = async () => {
     try {
@@ -395,11 +479,15 @@ const Itinerary = ({navigation, route}) => {
 
   // Handle save button press
   const handleSave = async () => {
+    setSavingEvents(true);
+
     if (!cabinNumber || !bookingNumber) {
       Alert.alert(
         'Missing Information',
         'Please enter both cabin number and booking number.',
       );
+      setSavingEvents(false);
+
       return;
     }
 
@@ -427,6 +515,8 @@ const Itinerary = ({navigation, route}) => {
           'Calendar Permission Denied',
           'Unable to save events to calendar. Please grant calendar permissions in app settings.',
         );
+        setSavingEvents(false);
+
         return;
       }
 
@@ -474,6 +564,17 @@ const Itinerary = ({navigation, route}) => {
     );
   };
 
+  console.log(
+    'dmkmkm',
+    tourCode,
+    'ded',
+    date,
+    'dede',
+    heading1,
+    'duration',
+    duration1,
+  );
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#5779B9" barStyle="light-content" />
@@ -500,12 +601,46 @@ const Itinerary = ({navigation, route}) => {
         <FlatList
           data={itineraryData}
           keyExtractor={(item, index) => `${item.day || ''}-${index}`}
-          renderItem={({item}) => (
-            <View style={styles.row}>
-              <Text style={styles.cell}>
-                {calculateDateShow(date, item.day)}
-              </Text>
-              <Text style={styles.cell}>{item.port || '-'}</Text>
+          renderItem={({item, index}) => (
+            <View>
+              <TouchableOpacity
+                style={styles.row}
+                onPress={() => toggleExpand(index)}
+                activeOpacity={0.7}>
+                <Text style={styles.cell}>{item.startDate}</Text>
+                <Text style={styles.cell}>{item.port || '-'}</Text>
+                <Image
+                  source={downArrow}
+                  style={[
+                    styles.downArrow,
+                    expandedIndex === index && {
+                      transform: [{rotate: '180deg'}],
+                    },
+                  ]}
+                />
+              </TouchableOpacity>
+
+              {expandedIndex === index && (
+                <View style={styles.descriptionContainer}>
+                  <Text style={styles.descriptionText}>
+                    {item.port_description || ''}
+                  </Text>
+                  {item.link ? (
+                    <Text
+                      style={[
+                        styles.descriptionText,
+                        {color: 'blue', textDecorationLine: 'underline'},
+                      ]}
+                      onPress={() => {
+                        Linking.openURL(item.link).catch(err =>
+                          console.error('Failed to open URL:', err),
+                        );
+                      }}>
+                      Click here to know more
+                    </Text>
+                  ) : null}
+                </View>
+              )}
             </View>
           )}
           ListEmptyComponent={() => (
@@ -615,6 +750,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
     fontFamily: getFontFamily('medium'),
+  },
+  descriptionContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: '#fff8e1',
+  },
+  descriptionText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  downArrow: {
+    width: 16,
+    height: 16,
+    marginRight: 10,
+    tintColor: '#333',
   },
   headerRow: {
     flexDirection: 'row',

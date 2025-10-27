@@ -84,6 +84,7 @@ const Login = ({navigation}) => {
   };
 
   const handleLogin = async () => {
+    console.log('Handle login');
     if (!email || !password) {
       Toast.show({
         type: 'error',
@@ -172,7 +173,12 @@ const Login = ({navigation}) => {
           value={email}
           onChangeText={setEmail}
         />
-        <View style={{flexDirection:"row"}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            // alignItems: 'center',
+            // justifyContent: 'center',
+          }}>
           <CustomTextInput
             placeholder="Password"
             value={password}
@@ -194,20 +200,26 @@ const Login = ({navigation}) => {
           style={styles.forgotTxt}>
           <Text style={{color: 'black'}}>Forgot your password?</Text>
         </TouchableOpacity>
-        <LinearGradient
-          colors={['#8DC5EA', '#5879BC']}
-          style={styles.gradientButton}>
-          <TouchableOpacity
-            onPress={() => handleLogin()}
-            disabled={loading}
-            style={styles.loginButton}>
+        <TouchableOpacity
+          onPress={handleLogin}
+          style={styles.loginButton}
+          activeOpacity={0.8}>
+          <LinearGradient
+            colors={['#8DC5EA', '#5879BC']}
+            style={styles.gradientButton}>
             {loading ? (
-              <ActivityIndicator size="small" color="white" />
+              <View
+                style={{
+                  paddingVertical: 17,
+                }}>
+                <ActivityIndicator size="small" color="white" />
+              </View>
             ) : (
               <Text style={styles.buttonText}>Login</Text>
             )}
-          </TouchableOpacity>
-        </LinearGradient>
+          </LinearGradient>
+        </TouchableOpacity>
+
         <Text style={styles.continue}>Or continue with</Text>
         <View style={styles.socialContainer}>
           <TouchableOpacity
@@ -217,7 +229,7 @@ const Login = ({navigation}) => {
               colors={['#8DC5EA', '#5879BC']}
               style={styles.Socialbutton}>
               <Image
-                source={require('../../assets/images/google.png')}
+                source={require('./../../assets/images/google.png')}
                 style={styles.socialIcon}
               />
             </LinearGradient>
@@ -283,14 +295,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginButton: {
-    paddingVertical: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
+    // paddingVertical: 12,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // borderRadius: 8,
+    width: '100%',
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
+    paddingVertical: 12,
+
     fontFamily: getFontFamily('medium'),
   },
   continue: {
@@ -338,8 +353,14 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   iconContainer: {
-    marginLeft: -50,
-// Adjust positioning of the icon
+    // marginLeft: -50,
+    // backgroundColor: 'red',
+    position: 'absolute',
+    top: 19,
+    right: 20,
+    bottom: 0,
+
+    // Adjust positioning of the icon
   },
   icon: {
     width: 24, // Set width of the image
