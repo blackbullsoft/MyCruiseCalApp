@@ -155,7 +155,7 @@ export default function EditProfile() {
       formData.append('c_password', confirmPassword);
 
       const response = await axios.post(
-        'https://cruisecal.blackbullsolution.com/api/update-full-profile',
+        'http://cruisecal.blackbullsolution.com/api/update-full-profile',
         formData,
         {
           headers: {

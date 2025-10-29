@@ -27,14 +27,14 @@ const ResetPassword = ({navigation, route}) => {
   const [confirmPass, setConfirmPass] = useState('');
   const [loading, setLoading] = useState(false);
 
-//   useEffect(() => {
-//     handleResetPassword(email, otp);
-//     console.log('==', email, otp);
-//   }, []);
+  //   useEffect(() => {
+  //     handleResetPassword(email, otp);
+  //     console.log('==', email, otp);
+  //   }, []);
 
   const handleResetPassword = async () => {
-    console.log("emailnew==", email);
-    
+    console.log('emailnew==', email);
+
     if (!confirmOtp || !password) {
       Toast.show({
         type: 'error',
@@ -46,25 +46,25 @@ const ResetPassword = ({navigation, route}) => {
     }
 
     if (confirmOtp !== otp) {
-        Toast.show({
-          type: 'error',
-          position: 'top',
-          text1: 'Validation Error',
-          text2: 'Otp does not match.',
-        });
-        return;
-      }
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Validation Error',
+        text2: 'Otp does not match.',
+      });
+      return;
+    }
 
     if (confirmPass !== password) {
-        Toast.show({
-          type: 'error',
-          position: 'top',
-          text1: 'Validation Error',
-          text2: 'Password and Confirm Password does not match.',
-        });
-        return;
-      }
-  
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Validation Error',
+        text2: 'Password and Confirm Password does not match.',
+      });
+      return;
+    }
+
     setLoading(true);
     try {
       const formData = new FormData();
@@ -72,19 +72,19 @@ const ResetPassword = ({navigation, route}) => {
       formData.append('password', password);
       formData.append('token', confirmOtp); // or otp if you prefer
       formData.append('password_confirmation', confirmPass);
-  
+
       const response = await axios.post(
-        'https://cruisecal.blackbullsolution.com/api/reset-password',
+        'http://cruisecal.blackbullsolution.com/api/reset-password',
         formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-        }
+        },
       );
-  
+
       console.log('responsereset', response);
-  
+
       if (response.data.success) {
         Toast.show({
           type: 'success',
@@ -110,11 +110,10 @@ const ResetPassword = ({navigation, route}) => {
       setLoading(false);
     }
   };
-  
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{padding: 20}}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             resizeMode="contain"
@@ -176,7 +175,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    padding: 20,
+    // padding: 20,
+    // margin: 20,
     backgroundColor: 'white',
   },
   title: {

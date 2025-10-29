@@ -16,7 +16,7 @@ import colors from '../../theme/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import Toast from 'react-native-toast-message';
 import axios from 'axios';
-import { getFontFamily } from '../../utils/fontFamily';
+import {getFontFamily} from '../../utils/fontFamily';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ForgotPassword = ({navigation}) => {
@@ -37,7 +37,7 @@ const ForgotPassword = ({navigation}) => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'https://cruisecal.blackbullsolution.com/api/forgot-password',
+        'http://cruisecal.blackbullsolution.com/api/forgot-password',
         {email},
       );
       console.log('responseforget', response);
@@ -67,12 +67,22 @@ const ForgotPassword = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{
+          padding: 20,
+        }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             resizeMode="contain"
             source={require('../../assets/images/back.png')}
-            style={{height: 30, width: 30, marginLeft: 10,marginTop:20,resizeMode:"contain"}}
+            style={{
+              height: 30,
+              width: 30,
+              marginLeft: 10,
+              marginTop: 20,
+              resizeMode: 'contain',
+            }}
           />
         </TouchableOpacity>
         <Image
@@ -114,7 +124,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    padding: 20,
+    // padding: 20,
+    // margin: 20,
     backgroundColor: 'white',
   },
   title: {

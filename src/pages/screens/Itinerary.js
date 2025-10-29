@@ -24,9 +24,14 @@ import {format, addDays} from 'date-fns';
 import {check, PERMISSIONS, request, RESULTS} from 'react-native-permissions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import downArrow from '../../assets/images/down-arrow.png';
+import {
+  SafeAreaProvider,
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 // Create an axios instance with a timeout to avoid hanging requests
 const axiosInstance = axios.create({
-  baseURL: 'https://cruisecal.blackbullsolution.com/api',
+  baseURL: 'http://cruisecal.blackbullsolution.com/api',
   timeout: 10000, // Add timeout to prevent hanging requests
 });
 
@@ -54,7 +59,7 @@ const Itinerary = ({navigation, route}) => {
     processing: false,
   });
   const [expandedIndex, setExpandedIndex] = useState(null);
-
+  const insets = useSafeAreaInsets();
   const toggleExpand = index => {
     setExpandedIndex(prev => (prev === index ? null : index));
   };
@@ -245,7 +250,7 @@ const Itinerary = ({navigation, route}) => {
       // Get calendar permissions
       let hasPermission = false;
       if (Platform.OS === 'ios') {
-        const authStatus = await RNCalendarEvents.authorizationStatus();
+        const authStatus = await RNCalendarEvents.checkPermissions();
         hasPermission =
           authStatus === 'authorized' ||
           (await RNCalendarEvents.requestPermissions()) === 'authorized';
@@ -499,7 +504,7 @@ const Itinerary = ({navigation, route}) => {
       let hasPermission = false;
 
       if (Platform.OS === 'ios') {
-        const authStatus = await RNCalendarEvents.authorizationStatus();
+        const authStatus = await RNCalendarEvents.checkPermissions();
         if (authStatus !== 'authorized') {
           const requestStatus = await RNCalendarEvents.requestPermissions();
           hasPermission = requestStatus === 'authorized';
@@ -576,142 +581,156 @@ const Itinerary = ({navigation, route}) => {
   );
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor="#5779B9" barStyle="light-content" />
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            resizeMode="contain"
-            source={require('../../assets/images/backNew.png')}
-            style={{height: 30, width: 30, paddingTop: 20}}
-          />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Cruise Itinerary</Text>
-      </View>
+    <SafeAreaProvider>
+      <SafeAreaView
+        style={{
+          backgroundColor: '#5779B9',
+          flex: 1,
+          paddingBottom: insets.bottom - 100,
+        }}>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Image
+                resizeMode="contain"
+                source={require('../../assets/images/backNew.png')}
+                style={{height: 30, width: 30, paddingTop: 20}}
+              />
+            </TouchableOpacity>
+            <Text style={styles.headerText}>Cruise Itinerary</Text>
+          </View>
 
-      <Text style={styles.text}>
-        {heading1} ({duration1} Nights)
-      </Text>
+          <Text style={styles.text}>
+            {heading1} ({duration1} Nights)
+          </Text>
 
-      <View style={styles.tableContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.headerCell}>Date</Text>
-          <Text style={styles.headerCell}>Port</Text>
-        </View>
-        <FlatList
-          data={itineraryData}
-          keyExtractor={(item, index) => `${item.day || ''}-${index}`}
-          renderItem={({item, index}) => (
-            <View>
-              <TouchableOpacity
-                style={styles.row}
-                onPress={() => toggleExpand(index)}
-                activeOpacity={0.7}>
-                <Text style={styles.cell}>{item.startDate}</Text>
-                <Text style={styles.cell}>{item.port || '-'}</Text>
-                <Image
-                  source={downArrow}
-                  style={[
-                    styles.downArrow,
-                    expandedIndex === index && {
-                      transform: [{rotate: '180deg'}],
-                    },
-                  ]}
-                />
-              </TouchableOpacity>
-
-              {expandedIndex === index && (
-                <View style={styles.descriptionContainer}>
-                  <Text style={styles.descriptionText}>
-                    {item.port_description || ''}
-                  </Text>
-                  {item.link ? (
-                    <Text
+          <View style={styles.tableContainer}>
+            <View style={styles.headerRow}>
+              <Text style={styles.headerCell}>Date</Text>
+              <Text style={styles.headerCell}>Port</Text>
+            </View>
+            <FlatList
+              data={itineraryData}
+              style={{
+                flex: 1,
+                height: 200,
+              }}
+              keyExtractor={(item, index) => `${item.day || ''}-${index}`}
+              renderItem={({item, index}) => (
+                <View>
+                  <TouchableOpacity
+                    style={styles.row}
+                    onPress={() => toggleExpand(index)}
+                    activeOpacity={0.7}>
+                    <Text style={styles.cell}>{item.startDate}</Text>
+                    <Text style={styles.cell}>{item.port || '-'}</Text>
+                    <Image
+                      source={downArrow}
                       style={[
-                        styles.descriptionText,
-                        {color: 'blue', textDecorationLine: 'underline'},
+                        styles.downArrow,
+                        expandedIndex === index && {
+                          transform: [{rotate: '180deg'}],
+                        },
                       ]}
-                      onPress={() => {
-                        Linking.openURL(item.link).catch(err =>
-                          console.error('Failed to open URL:', err),
-                        );
-                      }}>
-                      Click here to know more
-                    </Text>
-                  ) : null}
+                    />
+                  </TouchableOpacity>
+
+                  {expandedIndex === index && (
+                    <View style={styles.descriptionContainer}>
+                      <Text style={styles.descriptionText}>
+                        {item.port_description || ''}
+                      </Text>
+                      {item.link ? (
+                        <Text
+                          style={[
+                            styles.descriptionText,
+                            {color: 'blue', textDecorationLine: 'underline'},
+                          ]}
+                          onPress={() => {
+                            Linking.openURL(item.link).catch(err =>
+                              console.error('Failed to open URL:', err),
+                            );
+                          }}>
+                          Click here to know more
+                        </Text>
+                      ) : null}
+                    </View>
+                  )}
                 </View>
               )}
-            </View>
-          )}
-          ListEmptyComponent={() => (
-            <View style={styles.emptyContainer}>
-              {loading ? (
-                <ActivityIndicator size="large" color="#5779B9" />
-              ) : (
-                <Text>{error || 'No itinerary data available'}</Text>
+              ListEmptyComponent={() => (
+                <View style={styles.emptyContainer}>
+                  {loading ? (
+                    <ActivityIndicator size="large" color="#5779B9" />
+                  ) : (
+                    <Text>{error || 'No itinerary data available'}</Text>
+                  )}
+                </View>
               )}
-            </View>
-          )}
-          contentContainerStyle={styles.flatListContent}
-        />
-      </View>
-
-      {/* Show progress indicator when saving events */}
-      <EventSavingProgress />
-
-      {!eventsSaved && (
-        <CustomButton
-          style={styles.button}
-          onPress={() => setIsModalVisible(true)}
-          label={'Add to Calendar'}
-          disabled={savingEvents}
-        />
-      )}
-
-      <Modal
-        visible={isModalVisible}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setIsModalVisible(false)}>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
-            <Text style={styles.modalTitle}>Booking Information</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Cabin Number"
-              placeholderTextColor="#999"
-              value={cabinNumber}
-              onChangeText={setCabinNumber}
+              contentContainerStyle={styles.flatListContent}
             />
-            <TextInput
-              style={styles.input}
-              placeholder="Booking Number"
-              placeholderTextColor="#999"
-              value={bookingNumber}
-              onChangeText={setBookingNumber}
-            />
-            <View style={styles.modalButtonsContainer}>
-              <TouchableOpacity
-                onPress={() => setIsModalVisible(false)}
-                style={styles.cancelButton}>
-                <Text style={styles.cancelButtonText}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={handleSave} disabled={savingEvents}>
-                <LinearGradient
-                  colors={['#8DC5EA', '#5879BC']}
-                  start={{x: 0, y: 0}}
-                  end={{x: 1, y: 0}}
-                  style={styles.modalButton}>
-                  <Text style={styles.modalButtonText}>
-                    {savingEvents ? 'Saving...' : 'Save'}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            </View>
           </View>
+
+          {/* Show progress indicator when saving events */}
+          <EventSavingProgress />
+
+          {!eventsSaved && (
+            <CustomButton
+              style={styles.button}
+              onPress={() => setIsModalVisible(true)}
+              label={'Add to Calendar'}
+              disabled={savingEvents}
+            />
+          )}
+
+          <Modal
+            visible={isModalVisible}
+            transparent
+            animationType="slide"
+            onRequestClose={() => setIsModalVisible(false)}>
+            <View style={styles.modalOverlay}>
+              <View style={styles.modalContainer}>
+                <Text style={styles.modalTitle}>Booking Information</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Cabin Number"
+                  placeholderTextColor="#999"
+                  value={cabinNumber}
+                  onChangeText={setCabinNumber}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Booking Number"
+                  placeholderTextColor="#999"
+                  value={bookingNumber}
+                  onChangeText={setBookingNumber}
+                />
+                <View style={styles.modalButtonsContainer}>
+                  <TouchableOpacity
+                    onPress={() => setIsModalVisible(false)}
+                    style={styles.cancelButton}>
+                    <Text style={styles.cancelButtonText}>Cancel</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={handleSave}
+                    disabled={savingEvents}>
+                    <LinearGradient
+                      colors={['#8DC5EA', '#5879BC']}
+                      start={{x: 0, y: 0}}
+                      end={{x: 1, y: 0}}
+                      style={styles.modalButton}>
+                      <Text style={styles.modalButtonText}>
+                        {savingEvents ? 'Saving...' : 'Save'}
+                      </Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
@@ -727,7 +746,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 30,
+    // marginTop: 30,
   },
   headerText: {
     color: 'white',

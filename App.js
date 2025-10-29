@@ -6,12 +6,15 @@ import AuthNavigation from './src/navigation/AuthNavigation/AuthNavigation';
 import Toast from 'react-native-toast-message';
 import store from './src/redux/store';
 import {Provider} from 'react-redux';
-import {usePushNotification} from './src/utility/pushNotificationService';
+import RNCalendarEvents from 'react-native-calendar-events';
+
+// import {usePushNotification} from './src/utility/pushNotificationService';
 import {handleNotificationAction} from './src/utility/calendarTrigger';
 import {check, PERMISSIONS, request, RESULTS} from 'react-native-permissions';
 // import axiosInstance from './src/api/axiosInstance';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import {usePushNotification} from './src/utility/pushNotificationService';
 
 const App = () => {
   const axiosInstance = axios.create({
@@ -36,9 +39,10 @@ const App = () => {
   const calendarPermission = async () => {
     try {
       let hasPermission = false;
-
-      if (Platform.OS === 'ios') {
-        const authStatus = await RNCalendarEvents.authorizationStatus();
+      console.log('Platform.OS', Platform.OS);
+      if (Platform.OS == 'ios') {
+        const authStatus = await RNCalendarEvents.checkPermissions();
+        console.log('auth Statuas', authStatus);
         if (authStatus !== 'authorized') {
           const requestStatus = await RNCalendarEvents.requestPermissions();
           hasPermission = requestStatus === 'authorized';
@@ -134,18 +138,18 @@ const App = () => {
       const parsed = JSON.parse(jsonValue);
       const bearerToken = parsed?.token || parsed?.access_token || parsed;
 
-      const response = await axiosInstance.post(
-        '/updateDeviceToken',
-        {
-          device_token: token,
-          device_type: Platform.OS === 'android' ? 'android' : 'ios',
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${bearerToken}`,
-          },
-        },
-      );
+      // const response = await axiosInstance.post(
+      //   '/updateDeviceToken',
+      //   {
+      //     device_token: token,
+      //     device_type: Platform.OS === 'android' ? 'android' : 'ios',
+      //   },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${bearerToken}`,
+      //     },
+      //   },
+      // );
 
       console.log('Device token updated successfully:', response.data);
     } catch (err) {

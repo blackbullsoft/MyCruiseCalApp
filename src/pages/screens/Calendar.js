@@ -10,7 +10,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://cruisecal.blackbullsolution.com/api',
+  baseURL: 'http://cruisecal.blackbullsolution.com/api',
   timeout: 10000,
 });
 

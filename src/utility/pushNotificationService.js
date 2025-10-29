@@ -3,7 +3,6 @@ import {useEffect, useRef} from 'react';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Platform, PermissionsAndroid, Alert, Linking} from 'react-native';
-import PushNotification from 'react-native-push-notification';
 import {handleNotificationAction} from './calendarTrigger';
 
 export const usePushNotification = ({

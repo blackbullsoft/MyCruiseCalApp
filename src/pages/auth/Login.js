@@ -5,8 +5,8 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  SafeAreaView,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
 import axios from 'axios';
 import CustomButton from '../../components/CustomButton';
@@ -24,6 +24,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const {height} = Dimensions.get('window');
 
@@ -108,8 +109,9 @@ const Login = ({navigation}) => {
     setLoading(true);
 
     try {
+      console.log('Attempting login with:', {email, password});
       const response = await axios.post(
-        'https://cruisecal.blackbullsolution.com/api/login',
+        'http://cruisecal.blackbullsolution.com/api/login',
         {email, password},
       );
       console.log('response', response);
@@ -143,6 +145,14 @@ const Login = ({navigation}) => {
         });
       }
     } catch (error) {
+      if (error.response) {
+        console.log('Error Response:', error.response.data);
+        console.log('Status:', error.response.status);
+      } else if (error.request) {
+        console.log('No response received:', error.request);
+      } else {
+        console.log('Error setting up request:', error.message);
+      }
       console.error('Error logging in:', error);
       Toast.show({
         type: 'error',
@@ -161,6 +171,10 @@ const Login = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar
+        barStyle="dark-content" // dark icons for white background
+        backgroundColor="white" // white background (Android)
+      />
       <View style={styles.innerContainer}>
         <Image
           source={require('../../assets/images/appLogo.png')}
