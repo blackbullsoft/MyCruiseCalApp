@@ -1618,6 +1618,8 @@ PODS:
     - React-Core
   - RNCPicker (2.11.0):
     - React-Core
+  - RNCPushNotificationIOS (1.11.0):
+    - React-Core
   - RNFBApp (18.0.0):
     - Firebase/CoreOnly (= 10.10.0)
     - React-Core
@@ -1830,6 +1832,7 @@ DEPENDENCIES:
   - RNCalendarEvents (from `../node_modules/react-native-calendar-events`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
+  - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
@@ -2003,6 +2006,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCPicker:
     :path: "../node_modules/@react-native-picker/picker"
+  RNCPushNotificationIOS:
+    :path: "../node_modules/@react-native-community/push-notification-ios"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -2112,6 +2117,7 @@ SPEC CHECKSUMS:
   RNCalendarEvents: f90f73666b6bcbb3cc8a491ffbb5e48c0db3de37
   RNCAsyncStorage: b6410dead2732b5c72a7fdb1ecb5651bbcf4674b
   RNCPicker: 124b4fb5859ba1a3fd53a91e16d1e7a0fc016e59
+  RNCPushNotificationIOS: 6c4ca3388c7434e4a662b92e4dfeeee858e6f440
   RNFBApp: 6519289b48015f6790e59e588181c298a6c2fe2b
   RNFBAuth: dd9d80b6290c0764e2b7d2254b90d7507d5ece43
   RNFBMessaging: a9dc21073d242013296cf88b4a3d91b754058d80

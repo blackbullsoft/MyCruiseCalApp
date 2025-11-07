@@ -24,30 +24,25 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCalendarsFullAccessUsageDescription</key>
-<string>App needs calendar access to add cruise events.</string>
-
 	<key>NSAppTransportSecurity</key>
-<dict>
-    <!-- Allow all HTTP loads (for development) -->
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-    
-    <!-- OR fine-grained rule (safer, for your specific domain) -->
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>cruisecal.blackbullsolution.com</key>
-        <dict>
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <key>NSExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-            <key>NSExceptionRequiresForwardSecrecy</key>
-            <false/>
-        </dict>
-    </dict>
-</dict>
-
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>cruisecal.blackbullsolution.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>App needs calendar access to add cruise events.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>We need access to your calendar to add cruise itinerary events.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -90,6 +85,11 @@
 		<string>poppins-latin-ext-800-normal.ttf</string>
 		<string>poppins-latin-ext-900-italic.ttf</string>
 		<string>poppins-latin-ext-900-normal.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+		<string>fetch</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
