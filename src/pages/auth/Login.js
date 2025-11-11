@@ -114,12 +114,12 @@ const Login = ({navigation}) => {
         'http://cruisecal.blackbullsolution.com/api/login',
         {email, password},
       );
-      console.log('response', response);
 
       // Check if the login is successful
 
       if (response?.data?.success) {
         const {token, name, id} = response?.data?.data; // Extract the token and name from the response
+        console.log('response login', response?.data?.data);
 
         // Show a success message
         Toast.show({
@@ -128,10 +128,18 @@ const Login = ({navigation}) => {
           text1: 'Login Successful',
           text2: `Welcome back, ${name}!`,
         });
+        const userDetails = {
+          displayName: name,
+          email: email,
+        };
+        dispatch(setUser(userDetails));
 
         // Save the token to persist login state (Optional: You can store this in AsyncStorage)
         await AsyncStorage.setItem('userToken', JSON.stringify(token));
-        await AsyncStorage.setItem('user_name', name);
+        await AsyncStorage.setItem(
+          'user_name',
+          JSON.stringify(response?.data?.data?.name),
+        );
         await AsyncStorage.setItem('userId', JSON.stringify(id));
 
         // Navigate to the Drawer screen

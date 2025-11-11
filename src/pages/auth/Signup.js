@@ -118,7 +118,11 @@ const Signup = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{
+          padding: 20,
+        }}>
         {/* Back button */}
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
@@ -197,7 +201,7 @@ const Signup = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    // padding: 20,
     backgroundColor: 'white',
   },
   title: {

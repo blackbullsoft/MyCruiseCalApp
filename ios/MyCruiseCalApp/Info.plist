@@ -46,7 +46,17 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>We need access to your calendar to add cruise itinerary events.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>This app uses your location to show nearby ports and cruise routes.</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+<string>This app needs access to your photo library so you can select and upload photos.</string>
+
+<key>NSCameraUsageDescription</key>
+<string>This app needs camera access to take pictures for your profile or uploads.</string>
+
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>This app needs permission to save images to your photo library.</string>
+
 	<key>UIAppFonts</key>
 	<array>
 		<string>poppins-latin-100-italic.ttf</string>
